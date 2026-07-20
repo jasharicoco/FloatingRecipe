@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f0e7">
+    <meta name="description" content="Spara dina recept som personliga, sökbara receptlappar.">
+    <meta property="og:locale" content="sv_SE">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Mina receptlappar">
+    <meta property="og:title" content="Mina receptlappar">
+    <meta property="og:description" content="Spara recept som fri text och hitta tillbaka med en snabb sökning.">
+    <meta property="og:image" content="/share-preview.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Mina receptlappar – en personlig och sökbar receptsamling.">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mina receptlappar">
+    <meta name="twitter:description" content="Spara recept som fri text och hitta tillbaka med en snabb sökning.">
+    <meta name="twitter:image" content="/share-preview.jpg">
+    <meta name="twitter:image:alt" content="Mina receptlappar – en personlig och sökbar receptsamling.">
+    <title>Mina receptlappar</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <div id="boot-status" class="boot-status" role="status">Öppnar receptsamlingen…</div>
+
+    <main id="landing-view" class="landing-view" hidden>
+      <div class="landing-account-actions" aria-label="Konto">
+        <button class="landing-login-button" type="button" data-auth-mode="login">Logga in</button>
+        <button class="paper-button primary" type="button" data-auth-mode="register">Skapa konto</button>
+      </div>
+
+      <header class="landing-hero">
+        <div class="landing-mark" aria-hidden="true">R</div>
+        <p class="eyebrow">En plats för det du lagar</p>
+        <h1>Mina recept,<br>precis som jag skrev dem.</h1>
+        <p class="landing-lead">Spara recept som fri text. Hitta tillbaka genom att söka på en ingrediens, en rätt eller ett ord du minns.</p>
+        <div class="landing-hero-actions">
+          <button class="paper-button primary landing-primary-action" type="button" data-auth-mode="register">Skapa min receptsamling</button>
+          <span>Helt gratis</span>
+        </div>
+      </header>
+
+      <section class="landing-preview" aria-labelledby="preview-title">
+        <div class="landing-preview-heading">
+          <p class="eyebrow">Så här känns det där inne</p>
+          <h2 id="preview-title">Prova att söka bland lapparna</h2>
+        </div>
+
+        <div class="search-area landing-search-area">
+          <div class="search-box">
+            <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <circle cx="10.5" cy="10.5" r="6.5"></circle>
+              <path d="m15.5 15.5 5 5"></path>
+            </svg>
+            <div class="floating-field search-floating-field">
+              <input id="preview-search" type="search" autocomplete="off" spellcheck="false" aria-describedby="preview-status">
+              <label for="preview-search">Prova: kyckling, vitlök eller paj…</label>
+            </div>
+            <button id="clear-preview-search" class="clear-search" type="button" aria-label="Rensa förhandsvisningens sökning" hidden>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <p id="preview-status" class="result-status" role="status" aria-live="polite">8 receptlappar i förhandsvisningen</p>
+        </div>
+
+        <div id="landing-preview-field" class="landing-preview-field" aria-label="Exempel på receptlappar">
+          <div class="preview-shell preview-one" data-preview-search="krämig kycklingpasta kyckling pasta vitlök grädde parmesan">
+            <article class="recipe-card preview-card color-apricot">
+              <h3>Krämig kycklingpasta</h3>
+              <p>kyckling, pasta, vitlök, grädde, parmesan, salt, peppar</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-two" data-preview-search="vitlökspasta spaghetti vitlök olivolja chili persilja parmesan">
+            <article class="recipe-card preview-card color-sage">
+              <h3>Vitlökspasta</h3>
+              <p>spaghetti, mycket vitlök, olivolja, chili flakes, persilja</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-three" data-preview-search="tomatsoppa tomat lök vitlök buljong grädde">
+            <article class="recipe-card preview-card color-blush">
+              <h3>Tomatsoppa</h3>
+              <p>krossade tomater, lök, vitlök, buljong, grädde, peppar</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-four" data-preview-search="ugnsbakad lax citron dill potatis crème fraîche">
+            <article class="recipe-card preview-card color-sky">
+              <h3>Ugnsbakad lax</h3>
+              <p>laxfilé, citron, dill, potatis, crème fraîche, salt</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-five" data-preview-search="pannkakor ägg mjölk vetemjöl smör">
+            <article class="recipe-card preview-card color-lilac">
+              <h3>Pannkakor</h3>
+              <p>ägg, mjölk, vetemjöl, salt, smör till stekning</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-six" data-preview-search="currygryta kyckling curry paprika lök kokosmjölk ris">
+            <article class="recipe-card preview-card color-butter">
+              <h3>Currygryta</h3>
+              <p>kyckling, curry, paprika, lök, kokosmjölk, ris</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-seven" data-preview-search="äppelpaj äpplen kanel socker smör havregryn vaniljsås glass">
+            <article class="recipe-card preview-card color-sky">
+              <h3>Äppelpaj</h3>
+              <p>äpplen, kanel, socker, smör, havregryn, vaniljsås</p>
+            </article>
+          </div>
+          <div class="preview-shell preview-eight" data-preview-search="fried rice ris ägg salladslök ärtor soja rester">
+            <article class="recipe-card preview-card color-linen">
+              <h3>Fried rice</h3>
+              <p>kokt ris, ägg, salladslök, ärtor, soja, valfria rester</p>
+            </article>
+          </div>
+          <p id="preview-empty" class="preview-empty" hidden>Ingen lapp matchar ännu. Prova ett annat ord.</p>
+        </div>
+      </section>
+
+      <section class="landing-promise" aria-labelledby="promise-title">
+        <p class="eyebrow">Bara det viktigaste</p>
+        <h2 id="promise-title">Ingen ingrediensdatabas.<br>Inga krångliga fält.</h2>
+        <p>Skriv namnet. Klistra in receptet. Välj en färg. Resten får vara precis så personligt och lite stökigt som ett bra receptarkiv ska vara. <br> Det viktiga är att du hittar dina recept.</p>
+        <button class="paper-button primary" type="button" data-auth-mode="register">Börja samla recept</button>
+      </section>
+
+      <footer class="landing-footer">
+        <span>Mina receptlappar</span>
+        <button type="button" data-auth-mode="login">Logga in</button>
+      </footer>
+    </main>
+
+    <section id="auth-view" class="auth-view" aria-labelledby="auth-title" hidden>
+      <div class="auth-card">
+        <button id="auth-back" class="auth-back" type="button">← Till startsidan</button>
+        <div class="auth-stamp" aria-hidden="true">R</div>
+        <p class="eyebrow">Din personliga samling</p>
+        <h1 id="auth-title">Mina receptlappar</h1>
+        <p class="auth-intro">Spara recepten precis som du skriver dem och hitta tillbaka med några få bokstäver.</p>
+
+        <div class="auth-switch" aria-label="Välj kontoåtgärd">
+          <button id="show-login" class="auth-switch-button is-active" type="button" aria-pressed="true">Logga in</button>
+          <button id="show-register" class="auth-switch-button" type="button" aria-pressed="false">Skapa konto</button>
+        </div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="field-group">
+            <div class="floating-field">
+              <input id="login-email" name="email" type="email" autocomplete="email" required>
+              <label for="login-email">E-post</label>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="floating-field password-field">
+              <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+              <label for="login-password">Lösenord</label>
+              <button class="password-toggle" type="button" aria-controls="login-password" aria-label="Visa lösenord" aria-pressed="false">
+                <svg class="password-eye password-eye-open" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                  <circle cx="12" cy="12" r="2.7"></circle>
+                </svg>
+                <svg class="password-eye password-eye-closed" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3l18 18"></path>
+                  <path d="M10.6 6.1A10.3 10.3 0 0 1 12 6c6 0 9.5 6 9.5 6a15 15 0 0 1-2.4 3.1M6.2 6.2C3.8 7.8 2.5 12 2.5 12s3.5 6 9.5 6c1.4 0 2.7-.3 3.8-.8"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <p id="login-error" class="form-error" role="alert" hidden></p>
+          <button class="paper-button primary auth-submit" type="submit">Logga in</button>
+        </form>
+
+        <form id="register-form" class="auth-form" novalidate hidden>
+          <div class="field-group">
+            <div class="floating-field">
+              <input id="register-name" name="name" type="text" maxlength="60" autocomplete="name" required>
+              <label for="register-name">Ditt namn</label>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="floating-field">
+              <input id="register-email" name="email" type="email" maxlength="254" autocomplete="email" required>
+              <label for="register-email">E-post</label>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="floating-field password-field">
+              <input id="register-password" name="password" type="password" minlength="8" maxlength="256" autocomplete="new-password" aria-describedby="password-hint" required>
+              <label for="register-password">Lösenord</label>
+              <button class="password-toggle" type="button" aria-controls="register-password" aria-label="Visa lösenord" aria-pressed="false">
+                <svg class="password-eye password-eye-open" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"></path>
+                  <circle cx="12" cy="12" r="2.7"></circle>
+                </svg>
+                <svg class="password-eye password-eye-closed" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                  <path d="M3 3l18 18"></path>
+                  <path d="M10.6 6.1A10.3 10.3 0 0 1 12 6c6 0 9.5 6 9.5 6a15 15 0 0 1-2.4 3.1M6.2 6.2C3.8 7.8 2.5 12 2.5 12s3.5 6 9.5 6c1.4 0 2.7-.3 3.8-.8"></path>
+                </svg>
+              </button>
+            </div>
+            <p id="password-hint" class="field-hint">Minst 8 tecken.</p>
+          </div>
+          <p id="register-error" class="form-error" role="alert" hidden></p>
+          <button class="paper-button primary auth-submit" type="submit">Skapa konto</button>
+        </form>
+      </div>
+    </section>
+
+    <main id="app-view" hidden>
+      <h1 class="visually-hidden">Mina receptlappar</h1>
+
+      <section class="search-area" aria-label="Sök bland recept">
+        <div class="search-box">
+          <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+            <circle cx="10.5" cy="10.5" r="6.5"></circle>
+            <path d="m15.5 15.5 5 5"></path>
+          </svg>
+          <div class="floating-field search-floating-field">
+            <input
+              id="recipe-search"
+              type="search"
+              autocomplete="off"
+              spellcheck="false"
+              aria-describedby="search-help search-status"
+            >
+            <label for="recipe-search">Sök recept, ingrediens eller ord…</label>
+          </div>
+          <button class="clear-search" type="button" aria-label="Rensa sökningen" hidden>
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <p id="search-help" class="visually-hidden">Resultaten filtreras direkt medan du skriver.</p>
+        <p id="search-status" class="result-status" role="status" aria-live="polite">Laddar recept…</p>
+      </section>
+
+      <section id="recipe-field" class="recipe-field" aria-label="Recept">
+        <div id="empty-state" class="empty-state" hidden>
+          <span class="empty-mark" aria-hidden="true">✦</span>
+          <p id="empty-message">Inga lappar matchar din sökning.</p>
+          <button id="reset-search" class="text-button" type="button">Visa alla recept</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="account-chip" class="account-chip" hidden>
+      <span id="account-name"></span>
+      <button id="logout" type="button">Logga ut</button>
+    </div>
+
+    <button id="add-recipe" class="add-button" type="button" aria-label="Lägg till ett nytt recept" hidden>
+      <span aria-hidden="true">+</span>
+    </button>
+
+    <dialog id="detail-dialog" class="paper-dialog detail-dialog" aria-labelledby="detail-title">
+      <div class="dialog-paper">
+        <button class="icon-button close-dialog" type="button" aria-label="Stäng receptet" data-close="detail-dialog">×</button>
+        <p class="eyebrow">Receptlapp</p>
+        <h2 id="detail-title"></h2>
+        <div id="detail-content" class="detail-content"></div>
+        <div class="dialog-actions">
+          <button id="edit-recipe" class="paper-button" type="button">Redigera</button>
+          <button id="ask-delete" class="paper-button danger-quiet" type="button">Ta bort</button>
+          <button class="paper-button primary" type="button" data-close="detail-dialog">Stäng</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog id="form-dialog" class="paper-dialog form-dialog" aria-labelledby="form-title">
+      <form id="recipe-form" class="dialog-paper" method="dialog" novalidate>
+        <button class="icon-button close-dialog" type="button" aria-label="Stäng formuläret" data-close="form-dialog">×</button>
+        <p class="eyebrow">Ny receptlapp</p>
+        <h2 id="form-title">Lägg till recept</h2>
+
+        <div class="field-group">
+          <div class="floating-field">
+            <input id="recipe-title" name="title" type="text" maxlength="120" required autocomplete="off">
+            <label for="recipe-title">Receptets namn</label>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="floating-field floating-textarea">
+            <textarea id="recipe-content" name="content" rows="10"></textarea>
+            <label for="recipe-content">Receptets innehåll</label>
+          </div>
+          <p class="field-hint">Radbrytningar och tomma rader bevaras.</p>
+        </div>
+
+        <fieldset class="color-picker">
+          <legend>Färg på lappen</legend>
+          <div class="swatches">
+            <label class="swatch swatch-butter" title="Ljusgul">
+              <input type="radio" name="color" value="butter" checked>
+              <span><span class="visually-hidden">Ljusgul</span></span>
+            </label>
+            <label class="swatch swatch-blush" title="Ljusrosa">
+              <input type="radio" name="color" value="blush">
+              <span><span class="visually-hidden">Ljusrosa</span></span>
+            </label>
+            <label class="swatch swatch-sky" title="Ljusblå">
+              <input type="radio" name="color" value="sky">
+              <span><span class="visually-hidden">Ljusblå</span></span>
+            </label>
+            <label class="swatch swatch-sage" title="Ljusgrön">
+              <input type="radio" name="color" value="sage">
+              <span><span class="visually-hidden">Ljusgrön</span></span>
+            </label>
+            <label class="swatch swatch-lilac" title="Ljuslila">
+              <input type="radio" name="color" value="lilac">
+              <span><span class="visually-hidden">Ljuslila</span></span>
+            </label>
+            <label class="swatch swatch-apricot" title="Ljusorange">
+              <input type="radio" name="color" value="apricot">
+              <span><span class="visually-hidden">Ljusorange</span></span>
+            </label>
+            <label class="swatch swatch-linen" title="Ljusbeige">
+              <input type="radio" name="color" value="linen">
+              <span><span class="visually-hidden">Ljusbeige</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <div class="dialog-actions">
+          <button class="paper-button" type="button" data-close="form-dialog">Avbryt</button>
+          <button id="save-recipe" class="paper-button primary" type="submit">Spara recept</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="delete-dialog" class="paper-dialog confirm-dialog" aria-labelledby="delete-title">
+      <div class="dialog-paper">
+        <p class="eyebrow">En sista koll</p>
+        <h2 id="delete-title">Ta bort receptet?</h2>
+        <p>Är du säker på att du vill ta bort <strong id="delete-recipe-name"></strong>? Det går inte att ångra.</p>
+        <div class="dialog-actions">
+          <button class="paper-button" type="button" data-close="delete-dialog">Avbryt</button>
+          <button id="confirm-delete" class="paper-button danger" type="button">Ta bort</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  </body>
+</html>

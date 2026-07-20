@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Mina receptlappar</title>
+  <path
+    fill="#eccbc2"
+    stroke="#c8aaa2"
+    stroke-width="1.5"
+    d="M6 2l4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3v6l3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4 3 4-3 4v6l-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3v-6l-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4-3-4 3-4V2Z"
+  />
+  <path fill="#fffaf3" opacity=".2" d="M10 9h44v46H10z"/>
+  <text
+    x="32"
+    y="42"
+    fill="#332f2b"
+    font-family="ui-monospace, SFMono-Regular, Consolas, monospace"
+    font-size="29"
+    font-weight="700"
+    text-anchor="middle"
+  >R</text>
+</svg>

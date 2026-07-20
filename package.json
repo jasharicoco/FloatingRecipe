@@ -1,0 +1,18 @@
+{
+  "name": "floating-recipe",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "A small personal recipe collection with floating recipe notes.",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "node --test",
+    "lint": "node --check server.js && node --check lib/auth.js && node --check lib/config.js && node --check lib/database.js && node --check lib/rate-limit.js && node --check public/app.js",
+    "build": "npm run lint"
+  },
+  "engines": {
+    "node": ">=22.5"
+  }
+}

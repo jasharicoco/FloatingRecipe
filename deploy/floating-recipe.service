@@ -1,0 +1,35 @@
+[Unit]
+Description=FloatingRecipe web application
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=floating-recipe
+Group=floating-recipe
+WorkingDirectory=/var/www/floating-recipe
+EnvironmentFile=/etc/floating-recipe.env
+ExecStart=/usr/bin/node /var/www/floating-recipe/server.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=20
+KillSignal=SIGTERM
+UMask=0077
+
+NoNewPrivileges=true
+PrivateDevices=true
+PrivateTmp=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+ReadWritePaths=/var/lib/floating-recipe
+
+[Install]
+WantedBy=multi-user.target
