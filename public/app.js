@@ -19,6 +19,7 @@ const elements = {
   previewStatus: document.querySelector('#preview-status'),
   previewField: document.querySelector('#landing-preview-field'),
   previewCards: document.querySelectorAll('[data-preview-search]'),
+  previewButtons: document.querySelectorAll('[data-preview-recipe]'),
   previewEmpty: document.querySelector('#preview-empty'),
   showLogin: document.querySelector('#show-login'),
   showRegister: document.querySelector('#show-register'),
@@ -40,6 +41,7 @@ const elements = {
   emptyMessage: document.querySelector('#empty-message'),
   add: document.querySelector('#add-recipe'),
   detailDialog: document.querySelector('#detail-dialog'),
+  detailEyebrow: document.querySelector('#detail-eyebrow'),
   detailTitle: document.querySelector('#detail-title'),
   detailContent: document.querySelector('#detail-content'),
   edit: document.querySelector('#edit-recipe'),
@@ -56,6 +58,137 @@ const elements = {
   deleteName: document.querySelector('#delete-recipe-name'),
   confirmDelete: document.querySelector('#confirm-delete'),
   toast: document.querySelector('#toast'),
+};
+
+const previewRecipes = {
+  'chicken-pasta': {
+    title: 'Krämig kycklingpasta',
+    color: 'apricot',
+    content: `4 portioner
+
+Ingredienser
+400 g pasta
+500 g kycklingfilé
+2 vitlöksklyftor
+3 dl grädde
+1 dl riven parmesan
+Salt och peppar
+
+Gör så här
+Koka pastan. Stek kycklingen i bitar och låt vitlöken fräsa med på slutet. Häll över grädden och rör ner parmesan. Vänd ihop med pastan och smaka av med salt och peppar.`,
+  },
+  'garlic-pasta': {
+    title: 'Vitlökspasta',
+    color: 'sage',
+    content: `2 portioner
+
+Ingredienser
+200 g spaghetti
+4 vitlöksklyftor
+½ dl olivolja
+Chiliflakes
+Persilja
+Parmesan
+
+Gör så här
+Koka pastan al dente och spara lite pastavatten. Fräs tunt skivad vitlök och chili försiktigt i oljan. Vänd ner pastan, en skvätt pastavatten och persilja. Toppa med parmesan.`,
+  },
+  'tomato-soup': {
+    title: 'Tomatsoppa',
+    color: 'blush',
+    content: `4 portioner
+
+Ingredienser
+2 burkar krossade tomater
+1 gul lök
+2 vitlöksklyftor
+5 dl grönsaksbuljong
+1 dl grädde
+Svartpeppar
+
+Gör så här
+Fräs hackad lök och vitlök mjukt. Tillsätt tomater och buljong och låt sjuda i 20 minuter. Mixa slät, rör ner grädden och smaka av med peppar.`,
+  },
+  'baked-salmon': {
+    title: 'Ugnsbakad lax',
+    color: 'sky',
+    content: `4 portioner
+
+Ingredienser
+600 g laxfilé
+1 citron
+1 knippe dill
+800 g potatis
+2 dl crème fraîche
+Salt
+
+Gör så här
+Rosta potatisen i 225° tills den nästan är klar. Lägg in laxen, salta och baka vidare i cirka 15 minuter. Blanda crème fraîche med dill, citronskal och lite citronsaft.`,
+  },
+  pancakes: {
+    title: 'Pannkakor',
+    color: 'lilac',
+    content: `Cirka 10 pannkakor
+
+Ingredienser
+3 ägg
+6 dl mjölk
+2½ dl vetemjöl
+½ tsk salt
+Smör till stekning
+
+Gör så här
+Vispa mjölet med hälften av mjölken till en slät smet. Vispa ner resten av mjölken, äggen och saltet. Låt gärna vila i 10 minuter och stek sedan tunt i smör.`,
+  },
+  'chicken-curry': {
+    title: 'Currygryta',
+    color: 'butter',
+    content: `4 portioner
+
+Ingredienser
+500 g kyckling
+2 msk curry
+1 paprika
+1 gul lök
+4 dl kokosmjölk
+Ris
+
+Gör så här
+Stek kycklingen i bitar. Tillsätt lök, paprika och curry och låt fräsa några minuter. Häll över kokosmjölken och sjud tills kycklingen är klar. Servera med ris.`,
+  },
+  'apple-pie': {
+    title: 'Äppelpaj',
+    color: 'sky',
+    content: `6 portioner
+
+Ingredienser
+5 äpplen
+1 tsk kanel
+1 msk socker
+125 g smör
+2 dl havregryn
+1½ dl vetemjöl
+1 dl socker
+
+Gör så här
+Skiva äpplena och lägg dem i en form med kanel och socker. Nyp ihop smör, havregryn, mjöl och socker till ett smul. Strö över och grädda i 200° i cirka 25 minuter.`,
+  },
+  'fried-rice': {
+    title: 'Fried rice',
+    color: 'linen',
+    content: `4 portioner
+
+Ingredienser
+6 dl kallt kokt ris
+3 ägg
+3 salladslökar
+2 dl ärtor
+3 msk soja
+Valfria rester
+
+Gör så här
+Stek äggen hastigt och lägg åt sidan. Stek riset på hög värme tills det får lite färg. Tillsätt ärtor, salladslök och rester. Vänd ner äggen och smaka av med soja.`,
+  },
 };
 
 function hash(value) {
@@ -388,8 +521,24 @@ function openDetail(id) {
   const recipe = recipeById(id);
   if (!recipe) return;
   state.activeId = id;
+  elements.detailEyebrow.textContent = 'Receptlapp';
   elements.detailTitle.textContent = recipe.title;
   elements.detailContent.textContent = recipe.content;
+  elements.edit.hidden = false;
+  elements.askDelete.hidden = false;
+  elements.detailDialog.className = `paper-dialog detail-dialog color-${recipe.color}`;
+  elements.detailDialog.showModal();
+}
+
+function openPreviewDetail(id) {
+  const recipe = previewRecipes[id];
+  if (!recipe) return;
+  state.activeId = null;
+  elements.detailEyebrow.textContent = 'Exempelrecept';
+  elements.detailTitle.textContent = recipe.title;
+  elements.detailContent.textContent = recipe.content;
+  elements.edit.hidden = true;
+  elements.askDelete.hidden = true;
   elements.detailDialog.className = `paper-dialog detail-dialog color-${recipe.color}`;
   elements.detailDialog.showModal();
 }
@@ -440,6 +589,9 @@ elements.clearSearch.addEventListener('click', clearSearch);
 elements.resetSearch.addEventListener('click', clearSearch);
 elements.add.addEventListener('click', () => openForm());
 elements.previewSearch.addEventListener('input', filterPreview);
+elements.previewButtons.forEach((button) => {
+  button.addEventListener('click', () => openPreviewDetail(button.dataset.previewRecipe));
+});
 elements.clearPreviewSearch.addEventListener('click', () => {
   elements.previewSearch.value = '';
   syncFloatingLabel(elements.previewSearch);

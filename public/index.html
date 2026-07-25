@@ -71,52 +71,52 @@
 
         <div id="landing-preview-field" class="landing-preview-field" aria-label="Exempel på receptlappar">
           <div class="preview-shell preview-one" data-preview-search="krämig kycklingpasta kyckling pasta vitlök grädde parmesan">
-            <article class="recipe-card preview-card color-apricot">
+            <button class="recipe-card preview-card color-apricot" type="button" data-preview-recipe="chicken-pasta" aria-label="Öppna exempelreceptet Krämig kycklingpasta">
               <h3>Krämig kycklingpasta</h3>
               <p>kyckling, pasta, vitlök, grädde, parmesan, salt, peppar</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-two" data-preview-search="vitlökspasta spaghetti vitlök olivolja chili persilja parmesan">
-            <article class="recipe-card preview-card color-sage">
+            <button class="recipe-card preview-card color-sage" type="button" data-preview-recipe="garlic-pasta" aria-label="Öppna exempelreceptet Vitlökspasta">
               <h3>Vitlökspasta</h3>
               <p>spaghetti, mycket vitlök, olivolja, chili flakes, persilja</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-three" data-preview-search="tomatsoppa tomat lök vitlök buljong grädde">
-            <article class="recipe-card preview-card color-blush">
+            <button class="recipe-card preview-card color-blush" type="button" data-preview-recipe="tomato-soup" aria-label="Öppna exempelreceptet Tomatsoppa">
               <h3>Tomatsoppa</h3>
               <p>krossade tomater, lök, vitlök, buljong, grädde, peppar</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-four" data-preview-search="ugnsbakad lax citron dill potatis crème fraîche">
-            <article class="recipe-card preview-card color-sky">
+            <button class="recipe-card preview-card color-sky" type="button" data-preview-recipe="baked-salmon" aria-label="Öppna exempelreceptet Ugnsbakad lax">
               <h3>Ugnsbakad lax</h3>
               <p>laxfilé, citron, dill, potatis, crème fraîche, salt</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-five" data-preview-search="pannkakor ägg mjölk vetemjöl smör">
-            <article class="recipe-card preview-card color-lilac">
+            <button class="recipe-card preview-card color-lilac" type="button" data-preview-recipe="pancakes" aria-label="Öppna exempelreceptet Pannkakor">
               <h3>Pannkakor</h3>
               <p>ägg, mjölk, vetemjöl, salt, smör till stekning</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-six" data-preview-search="currygryta kyckling curry paprika lök kokosmjölk ris">
-            <article class="recipe-card preview-card color-butter">
+            <button class="recipe-card preview-card color-butter" type="button" data-preview-recipe="chicken-curry" aria-label="Öppna exempelreceptet Currygryta">
               <h3>Currygryta</h3>
               <p>kyckling, curry, paprika, lök, kokosmjölk, ris</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-seven" data-preview-search="äppelpaj äpplen kanel socker smör havregryn vaniljsås glass">
-            <article class="recipe-card preview-card color-sky">
+            <button class="recipe-card preview-card color-sky" type="button" data-preview-recipe="apple-pie" aria-label="Öppna exempelreceptet Äppelpaj">
               <h3>Äppelpaj</h3>
               <p>äpplen, kanel, socker, smör, havregryn, vaniljsås</p>
-            </article>
+            </button>
           </div>
           <div class="preview-shell preview-eight" data-preview-search="fried rice ris ägg salladslök ärtor soja rester">
-            <article class="recipe-card preview-card color-linen">
+            <button class="recipe-card preview-card color-linen" type="button" data-preview-recipe="fried-rice" aria-label="Öppna exempelreceptet Fried rice">
               <h3>Fried rice</h3>
               <p>kokt ris, ägg, salladslök, ärtor, soja, valfria rester</p>
-            </article>
+            </button>
           </div>
           <p id="preview-empty" class="preview-empty" hidden>Ingen lapp matchar ännu. Prova ett annat ord.</p>
         </div>
@@ -259,7 +259,7 @@
     <dialog id="detail-dialog" class="paper-dialog detail-dialog" aria-labelledby="detail-title">
       <div class="dialog-paper">
         <button class="icon-button close-dialog" type="button" aria-label="Stäng receptet" data-close="detail-dialog">×</button>
-        <p class="eyebrow">Receptlapp</p>
+        <p id="detail-eyebrow" class="eyebrow">Receptlapp</p>
         <h2 id="detail-title"></h2>
         <div id="detail-content" class="detail-content"></div>
         <div class="dialog-actions">

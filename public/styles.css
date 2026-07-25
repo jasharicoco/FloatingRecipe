@@ -237,7 +237,7 @@ input[type='radio'] {
 
 .preview-card {
   min-height: var(--preview-height, 190px);
-  cursor: default;
+  cursor: pointer;
 }
 
 .preview-card h3 {
@@ -718,11 +718,14 @@ input[type='radio'] {
 }
 
 .card-shell:hover,
-.card-shell:focus-within {
+.card-shell:focus-within,
+.preview-shell:hover,
+.preview-shell:focus-within {
   z-index: 4;
 }
 
 .card-shell:hover .recipe-card,
+.preview-shell:hover .recipe-card,
 .recipe-card:focus-visible {
   animation-play-state: paused;
   box-shadow: 0 18px 34px rgba(60, 48, 32, 0.18), 0 3px 8px rgba(60, 48, 32, 0.1);
