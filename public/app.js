@@ -263,7 +263,7 @@ function updateCard(shell, recipe) {
   button.className = `recipe-card color-${recipe.color}`;
   button.setAttribute('aria-label', `Öppna receptet ${recipe.title}`);
   shell.querySelector('h2').textContent = recipe.title;
-  shell.querySelector('p').textContent = recipe.content.replace(/\s+/g, ' ').trim() || 'En tom receptlapp';
+  shell.querySelector('p').textContent = recipe.content.trim() ? recipe.content : 'En tom receptlapp';
 }
 
 function renderRecipes({ introducedId = null } = {}) {
@@ -524,6 +524,7 @@ function openDetail(id) {
   elements.detailEyebrow.textContent = 'Receptlapp';
   elements.detailTitle.textContent = recipe.title;
   elements.detailContent.textContent = recipe.content;
+  elements.detailContent.scrollTop = 0;
   elements.edit.hidden = false;
   elements.askDelete.hidden = false;
   elements.detailDialog.className = `paper-dialog detail-dialog color-${recipe.color}`;
@@ -537,6 +538,7 @@ function openPreviewDetail(id) {
   elements.detailEyebrow.textContent = 'Exempelrecept';
   elements.detailTitle.textContent = recipe.title;
   elements.detailContent.textContent = recipe.content;
+  elements.detailContent.scrollTop = 0;
   elements.edit.hidden = true;
   elements.askDelete.hidden = true;
   elements.detailDialog.className = `paper-dialog detail-dialog color-${recipe.color}`;

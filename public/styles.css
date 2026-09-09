@@ -750,6 +750,7 @@ input[type='radio'] {
   font-size: clamp(0.81rem, 1.05vw, 0.95rem);
   line-height: 1.62;
   letter-spacing: -0.01em;
+  white-space: pre-wrap;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 5;
 }
@@ -903,6 +904,24 @@ input[type='radio'] {
   overflow-wrap: anywhere;
 }
 
+.detail-dialog .dialog-paper {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.detail-dialog .detail-content {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-bottom: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.detail-dialog .dialog-actions {
+  flex: 0 0 auto;
+}
+
 .dialog-actions {
   display: flex;
   justify-content: flex-end;
@@ -977,7 +996,7 @@ input[type='radio'] {
 
 .field-group textarea {
   min-height: 210px;
-  padding: 29px 13px 13px;
+  padding: 16px 13px 13px;
   resize: vertical;
 }
 
